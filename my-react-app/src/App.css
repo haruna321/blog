@@ -1,0 +1,49 @@
+html{
+  font-size: 10px;
+}
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.postsList{
+  margin-top: 5rem;
+  list-style: none;
+}
+.post{
+  border: 1px solid #dcdcdc;
+  margin-bottom: 3rem;
+  padding: 1.5rem 3rem 1.5rem 1.5rem;
+}
+.post:last-child{
+  margin-bottom: 0;
+}
+.head{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.date{
+  font-size: 1.2rem;
+}
+.category{
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+.category li{
+  border: 1px solid rgb(22, 99, 223);
+  color: rgb(22, 99, 223);
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border-radius: 0.3rem;
+}
+.title{
+  font-size: 2.4rem;
+  margin-top: 1rem;
+}
+.text{
+  font-size: 1.6rem;
+  line-height: 1.5;
+  margin-top: 1.5rem;
+}
