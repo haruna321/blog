@@ -7,8 +7,9 @@ html{
 }
 
 .postsList{
-  margin-top: 5rem;
+  margin: 5rem auto 0;
   list-style: none;
+  max-width: 1000px;
 }
 .post{
   border: 1px solid #dcdcdc;
