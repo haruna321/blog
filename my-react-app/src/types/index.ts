@@ -6,3 +6,7 @@ export type TPostsData = {
   categories: string[];
   content: string;
 }
+
+export type TPostParams = {
+  id: string;
+}

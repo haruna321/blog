@@ -1,26 +1,10 @@
-html{
-  font-size: 10px;
+.wrapper{
+  max-width: 800px;
+  width: 100%;
+  margin: 50px auto;
 }
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-}
-a{
-  color: #333;
-  text-decoration: none;
-}
-.postsList{
-  margin: 5rem auto 0;
-  list-style: none;
-  max-width: 1000px;
-}
-.post{
-  border: 1px solid #dcdcdc;
-  margin-bottom: 3rem;
-  padding: 1.5rem 3rem 1.5rem 1.5rem;
-}
-.post:last-child{
-  margin-bottom: 0;
+.body{
+  padding: 10px;
 }
 .head{
   display: flex;
