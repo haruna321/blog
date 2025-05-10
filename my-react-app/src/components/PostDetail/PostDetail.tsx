@@ -1,12 +1,25 @@
 import styles from "./PostDetail.module.css";
-import { posts } from '../../data/posts'
 import { useParams } from "react-router-dom";
-import { TPostParams } from "../../types";
+import { TPostParams, TPostsData } from "../../types";
+import { useEffect, useState } from "react";
 
 const PostDetail = () => {
 
+  const [isLoading, setIsLoading] = useState(true);
+  const [post, setPost] = useState<TPostsData | null>(null);
   const { id } = useParams<TPostParams>();
-  const post = posts.find((item) => item.id === Number(id));
+
+  useEffect(() => {
+    const fetcher = async () => {
+      const res = await fetch(`https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/posts/${id}`);
+      const data = await res.json();
+      setPost(data.post);
+      setIsLoading(false);
+    };
+    fetcher();
+  }, [id]);
+
+  if (isLoading) return <p>読み込み中...</p>
   if (!post) return <p className="">記事が見つかりません</p>;
 
   return (
