@@ -35,6 +35,7 @@ const Form = () => {
     !excessiveNameLength &&
     !emptyName &&
     !emptyEmail &&
+    validEmail &&
     !emptyComment &&
     !insufficientCommnetLength;
 
@@ -54,28 +55,28 @@ const Form = () => {
       setCommentErrorMessage("本文は500文字以内で入力してください");
     }
 
-    if (enableSubmit) {
-      setIsSending(true);
-      try {
-        const res = await fetch("https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/contacts",{
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email, message: comment }),
-        });
-        if (!res.ok) throw new Error("送信失敗");
+    if (!enableSubmit) return;
 
-        alert("送信しました！");
-        onClear();
-      } catch {
-        alert("送信に失敗しました");
-      } finally {
-        setIsSending(false);
-      }
+    setIsSending(true);
+    try {
+      const res = await fetch("https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/contacts",{
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message: comment }),
+      });
+      if (!res.ok) throw new Error("送信失敗");
+
+      alert("送信しました！");
+      handleClear();
+    } catch {
+      alert("送信に失敗しました");
+    } finally {
+      setIsSending(false);
     }
   };
 
   // クリア
-  const onClear = () => {
+  const handleClear = () => {
     setName("");
     setEmail("");
     setComment("");
@@ -137,7 +138,7 @@ const Form = () => {
         </dl>
         <div className={styles.buttonWrapper}>
           <button type="submit" disabled={isSending}>送信</button>
-          <button type="button" onClick={onClear}>クリア</button>
+          <button type="button" onClick={handleClear}>クリア</button>
         </div>
       </form>
     </div>
