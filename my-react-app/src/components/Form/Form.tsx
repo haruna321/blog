@@ -14,7 +14,7 @@ const Form = () => {
   // 送信処理
   const [isSending, setIsSending] = useState(false);
 
-  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // エラーメッセージの初期化
@@ -86,17 +86,17 @@ const Form = () => {
   };
 
   // onChange
-  const onChangeName = (
+  const handleChangeName = (
     e: ChangeEvent<HTMLInputElement>
   ) => {
     setName(e.target.value);
   };
-  const onChangeEmail = (
+  const handleChangeEmail = (
     e: ChangeEvent<HTMLInputElement>
   ) => {
     setEmail(e.target.value);
   };
-  const onChangeComment = (
+  const handleChangeComment = (
     e: ChangeEvent<HTMLTextAreaElement>
   ) => {
     setComment(e.target.value);
@@ -105,10 +105,10 @@ const Form = () => {
   return (
     <div className={styles.body}>
       <h1 className={styles.title}>問い合わせフォーム</h1>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit}>
         <dl>
           <dt><span>必須</span><label htmlFor="name">お名前</label></dt>
-          <dd><input id="name" name="name" type="text" onChange={onChangeName} value={name} disabled={isSending} />
+          <dd><input id="name" name="name" type="text" onChange={handleChangeName} value={name} disabled={isSending} />
           {nameErrorMessage && (
             <p className={styles.errorMessage}>
               {nameErrorMessage}
@@ -118,7 +118,7 @@ const Form = () => {
         </dl>
         <dl>
           <dt><span>必須</span><label htmlFor="email">メールアドレス</label></dt>
-          <dd><input id="email" name="email" type="email" onChange={onChangeEmail} value={email} disabled={isSending} />
+          <dd><input id="email" name="email" type="email" onChange={handleChangeEmail} value={email} disabled={isSending} />
           {emailErrorMessage && (
             <p className={styles.errorMessage}>
               {emailErrorMessage}
@@ -128,7 +128,7 @@ const Form = () => {
         </dl>
         <dl>
           <dt><span>必須</span><label htmlFor="message">本文</label></dt>
-          <dd><textarea id="message" name="message" onChange={onChangeComment} value={comment} disabled={isSending} />
+          <dd><textarea id="message" name="message" onChange={handleChangeComment} value={comment} disabled={isSending} />
           {commentErrorMessage && (
             <p className={styles.errorMessage}>
               {commentErrorMessage}
